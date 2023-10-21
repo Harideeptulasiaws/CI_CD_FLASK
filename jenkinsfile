@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout') {
+            steps {
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Harideeptulasiaws/CI_CD_FLASK.git']])
+            }
+        
+        stage('Build') {
+            steps {
+                sh 'myapp.py'
+        }
+    }
+}
+
